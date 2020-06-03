@@ -70,7 +70,7 @@ RETURNS TABLE(geometry geometry, osm_id bigint, render_height int, render_min_he
             NULL::text AS material, NULL::text AS colour,
             FALSE AS hide_3d
         FROM osm_building_polygon_gen1
-        WHERE zoom_level = 13 AND geometry && bbox
+        WHERE zoom_level = 15 AND geometry && bbox
         UNION ALL
         -- etldoc: osm_building_polygon -> layer_building:z14_
         SELECT DISTINCT ON (osm_id)
@@ -86,7 +86,7 @@ RETURNS TABLE(geometry geometry, osm_id bigint, render_height int, render_min_he
             (min_level IS NULL OR min_level < 1000) AND
             (height IS NULL OR height < 3000) AND
             (min_height IS NULL OR min_height < 3000) AND
-            zoom_level >= 14 AND geometry && bbox
+            zoom_level >= 16 AND geometry && bbox
     ) AS zoom_levels
     ORDER BY render_height ASC, ST_YMin(geometry) DESC;
 $$
