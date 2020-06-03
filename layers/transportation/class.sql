@@ -44,7 +44,8 @@ IMMUTABLE STRICT PARALLEL SAFE;
 CREATE OR REPLACE FUNCTION surface_value(surface TEXT) RETURNS TEXT AS $$
     SELECT CASE
         WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal', 'paving_stones', 'sett', 'unhewn_cobblestone', 'wood') THEN 'paved'
-        WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'gravel_turf', 'ground', 'ice', 'mud', 'pebblestone', 'salt', 'sand', 'snow', 'woodchips') THEN 'unpaved'
+        WHEN surface IN ('unpaved', 'compacted', 'dirt', 'fine_gravel', 'gravel') THEN 'track'
+        WHEN surface IN ('earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'ice', 'mud', 'pebblestone', 'salt', 'sand', 'snow', 'woodchips') THEN 'unpaved'
     END;
 $$
 LANGUAGE SQL
