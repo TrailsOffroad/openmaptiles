@@ -3,7 +3,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-
+source .env
 ###########################################
 # OpenMapTiles quickstart.sh for x86_64 linux
 #
@@ -38,12 +38,15 @@ set -o nounset
 #
 
 # If --empty is not given, use preloaded docker image to speed up
-if [ $# -gt 0 ] && [[ $1 == --empty ]]; then
-  export USE_PRELOADED_IMAGE=""
-  shift
-else
-  export USE_PRELOADED_IMAGE=true
-fi
+#if [ $# -gt 0 ] && [[ $1 == --empty ]]; then
+#  export USE_PRELOADED_IMAGE=""
+#  shift
+#else
+#  export USE_PRELOADED_IMAGE=true
+#fi
+
+export USE_PRELOADED_IMAGE=false
+
 
 if [ $# -eq 0 ]; then
   #  default test area
