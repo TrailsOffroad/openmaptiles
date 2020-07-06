@@ -15,6 +15,7 @@ services:
     # Use "command: postgres -c jit=off" for PostgreSQL 11+ because of slow large MVT query processing
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - /openmaptiles2/my-postgres.conf:/etc/postgresql/postgresql.conf
     networks:
       - postgres_conn
     ports:
