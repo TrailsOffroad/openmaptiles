@@ -31,8 +31,8 @@ SELECT
     is_intermittent::int                         AS intermittent
 FROM osm_water_lakeline
 WHERE geometry && bbox
-  AND ((zoom_level BETWEEN 9 AND 13 AND LineLabel(zoom_level, NULLIF(name, ''), geometry))
-    OR (zoom_level >= 14))
+  AND ((zoom_level BETWEEN 9 AND 11 AND LineLabel(zoom_level, NULLIF(name, ''), geometry))
+    OR (zoom_level >= 12))
 UNION ALL
 SELECT
     -- etldoc: osm_water_point ->  layer_water_name:z9_13
@@ -51,8 +51,8 @@ SELECT
 FROM osm_water_point
 WHERE geometry && bbox
   AND (
-        (zoom_level BETWEEN 9 AND 13 AND area > 70000 * 2 ^ (20 - zoom_level))
-        OR (zoom_level >= 14)
+        (zoom_level BETWEEN 9 AND 11 AND area > 30000 * 2 ^ (20 - zoom_level))
+        OR (zoom_level >= 12)
     )
 UNION ALL
 SELECT
@@ -72,7 +72,7 @@ WHERE geometry && bbox
   AND (
         place = 'ocean'
         OR (zoom_level >= "rank" AND "rank" IS NOT NULL)
-        OR (zoom_level >= 8)
+        OR (zoom_level >= 7)
     );
 $$ LANGUAGE SQL STABLE
                 -- STRICT

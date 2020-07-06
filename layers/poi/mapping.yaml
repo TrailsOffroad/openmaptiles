@@ -8,7 +8,6 @@ def_poi_mapping_aerialway: &poi_mapping_aerialway
 
 # amenity values , see http://taginfo.openstreetmap.org/keys/amenity#values
 def_poi_mapping_amenity: &poi_mapping_amenity
-  - arts_centre
   - bank
   - bar
   - bbq
@@ -17,51 +16,40 @@ def_poi_mapping_amenity: &poi_mapping_amenity
   - biergarten
   - bus_station
   - cafe
-  - cinema
   - clinic
   - college
   - community_centre
   - courthouse
-  - dentist
   - doctors
   - drinking_water
   - embassy
-  - fast_food
   - ferry_terminal
   - fire_station
   - food_court
   - fuel
   - grave_yard
   - hospital
-  - ice_cream
-  - kindergarten
   - library
   - marketplace
   - motorcycle_parking
-  - nightclub
-  - nursing_home
   - parking
   - pharmacy
   - place_of_worship
   - police
   - post_box
   - post_office
-  - prison
   - pub
   - public_building
-  - recycling
   - restaurant
   - school
   - shelter
-  - swimming_pool
-  - taxi
-  - telephone
   - theatre
   - toilets
   - townhall
   - university
   - veterinary
   - waste_basket
+  - ranger_station
 
 # barrier values , see http://taginfo.openstreetmap.org/keys/barrier#values
 def_poi_mapping_barrier: &poi_mapping_barrier
@@ -87,6 +75,8 @@ def_poi_mapping_historic: &poi_mapping_historic
   - monument
   - castle
   - ruins
+  - mine
+  - rune_stone
 
 # landuse values , see http://taginfo.openstreetmap.org/keys/landuse#values
 def_poi_mapping_landuse: &poi_mapping_landuse
@@ -99,11 +89,8 @@ def_poi_mapping_landuse: &poi_mapping_landuse
 # leisure values , see http://taginfo.openstreetmap.org/keys/leisure#values
 def_poi_mapping_leisure: &poi_mapping_leisure
   - dog_park
-  - escape_game
   - garden
   - golf_course
-  - ice_rink
-  - hackerspace
   - marina
   - miniature_golf
   - park
@@ -128,22 +115,16 @@ def_poi_mapping_shop: &poi_mapping_shop
   - accessories
   - alcohol
   - antiques
-  - art
   - bag
   - bakery
-  - beauty
-  - bed
   - beverages
   - bicycle
   - books
-  - boutique
   - butcher
   - camera
   - car
   - car_repair
   - car_parts
-  - carpet
-  - charity
   - chemist
   - chocolate
   - clothes
@@ -151,60 +132,26 @@ def_poi_mapping_shop: &poi_mapping_shop
   - computer
   - confectionery
   - convenience
-  - copyshop
-  - cosmetics
   - deli
   - delicatessen
   - department_store
   - doityourself
-  - dry_cleaning
   - electronics
-  - erotic
-  - fabric
-  - florist
   - frozen_food
-  - furniture
-  - garden_centre
   - general
-  - gift
-  - greengrocer
-  - hairdresser
   - hardware
-  - hearing_aids
-  - hifi
-  - ice_cream
-  - interior_decoration
-  - jewelry
   - kiosk
-  - lamps
-  - laundry
   - mall
-  - massage
   - mobile_phone
   - motorcycle
-  - music
-  - musical_instrument
-  - newsagent
-  - optician
   - outdoor
-  - perfume
-  - perfumery
   - pet
   - photo
-  - second_hand
   - shoes
   - sports
-  - stationery
   - supermarket
-  - tailor
-  - tattoo
   - ticket
   - tobacco
-  - toys
-  - travel_agency
-  - video
-  - video_games
-  - watches
   - weapons
   - wholesale
   - wine
