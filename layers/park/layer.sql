@@ -39,7 +39,7 @@ FROM (
          FROM (
                   -- etldoc: osm_park_polygon_gen8 -> layer_park:z5
 		  SELECT osm_id,
-			 geometry,
+			 ST_SimplifyPreserveTopology(geometry, ZRes(4)) as geometry,
 			 name,
 			 name_en,
 			 name_de,
@@ -48,12 +48,26 @@ FROM (
 			 boundary,
 			 protection_title
 		  FROM osm_park_polygon_gen8
-		  WHERE zoom_level = 5
+		  WHERE zoom_level = 4
 		    AND geometry && bbox
 		  UNION ALL
-		  -- etldoc: osm_park_polygon_gen8 -> layer_park:z6
+                  -- etldoc: osm_park_polygon_gen8 -> layer_park:z5
                   SELECT osm_id,
-                         geometry,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(5)) as geometry,
+                         name,
+                         name_en,
+                         name_de,
+                         tags,
+                         leisure,
+                         boundary,
+                         protection_title
+                  FROM osm_park_polygon_gen8
+                  WHERE zoom_level = 5
+                    AND geometry && bbox
+                  UNION ALL
+		              -- etldoc: osm_park_polygon_gen8 -> layer_park:z6
+                  SELECT osm_id,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(6)) as geometry,
                          name,
                          name_en,
                          name_de,
@@ -67,7 +81,7 @@ FROM (
                   UNION ALL
                   -- etldoc: osm_park_polygon_gen7 -> layer_park:z7
                   SELECT osm_id,
-                         geometry,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(7)) as geometry,
                          name,
                          name_en,
                          name_de,
@@ -81,7 +95,7 @@ FROM (
                   UNION ALL
                   -- etldoc: osm_park_polygon_gen6 -> layer_park:z8
                   SELECT osm_id,
-                         geometry,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(8)) as geometry,
                          name,
                          name_en,
                          name_de,
@@ -95,7 +109,7 @@ FROM (
                   UNION ALL
                   -- etldoc: osm_park_polygon_gen5 -> layer_park:z9
                   SELECT osm_id,
-                         geometry,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(9)) as geometry,
                          name,
                          name_en,
                          name_de,
@@ -109,7 +123,7 @@ FROM (
                   UNION ALL
                   -- etldoc: osm_park_polygon_gen4 -> layer_park:z10
                   SELECT osm_id,
-                         geometry,
+                         ST_SimplifyPreserveTopology(geometry, ZRes(10)) as geometry,,
                          name,
                          name_en,
                          name_de,
@@ -210,10 +224,26 @@ FROM (
 			 protection_title,
 			 area
 		  FROM osm_park_polygon_gen8
-		  WHERE zoom_level = 5
+		  WHERE zoom_level = 4
 		    AND geometry_point && bbox
 		    AND area > 70000*2^(20-zoom_level)
 		  UNION ALL
+                  -- etldoc: osm_park_polygon_gen8 -> layer_park:z5
+                  SELECT osm_id,
+                         geometry_point,
+                         name,
+                         name_en,
+                         name_de,
+                         tags,
+                         leisure,
+                         boundary,
+                         protection_title,
+                         area
+                  FROM osm_park_polygon_gen8
+                  WHERE zoom_level = 5
+                    AND geometry_point && bbox
+                    AND area > 70000*2^(20-zoom_level)
+                  UNION ALL
 
                   -- etldoc: osm_park_polygon_gen8 -> layer_park:z6
                   SELECT osm_id,
@@ -314,7 +344,7 @@ FROM (
                   FROM osm_park_polygon_gen3
                   WHERE zoom_level = 11
                     AND geometry_point && bbox
-                    AND area > 70000*2^(20-zoom_level)
+                    AND area > 60000*2^(20-zoom_level)
                   UNION ALL
 
                   -- etldoc: osm_park_polygon_gen2 -> layer_park:z12
@@ -331,7 +361,7 @@ FROM (
                   FROM osm_park_polygon_gen2
                   WHERE zoom_level = 12
                     AND geometry_point && bbox
-                    AND area > 70000*2^(20-zoom_level)
+                    AND area > 60000*2^(20-zoom_level)
                   UNION ALL
 
                   -- etldoc: osm_park_polygon_gen1 -> layer_park:z13
@@ -348,7 +378,7 @@ FROM (
                   FROM osm_park_polygon_gen1
                   WHERE zoom_level = 13
                     AND geometry_point && bbox
-                    AND area > 70000*2^(20-zoom_level)
+                    AND area > 60000*2^(20-zoom_level)
                   UNION ALL
 
                   -- etldoc: osm_park_polygon -> layer_park:z14
